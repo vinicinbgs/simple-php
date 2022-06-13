@@ -1,0 +1,39 @@
+body {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: fixed;
+    height: 350px;
+    width: 350px;
+    border-radius: 100%;
+    box-shadow: 0 4px 0 #d0b8ff;
+}
+
+p {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #d0b8ff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    animation: spinning 1s linear infinite;
+}

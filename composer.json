@@ -1,0 +1,21 @@
+{
+    "name": "dutra/study-php",
+    "description": "",
+    "authors": [
+        {
+            "name": "Vinicius Dutra",
+            "email": "dutra_morais@hotmail.com"
+        }
+    ],
+    "require": {
+        "psr/http-message": "^1.0"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-0": {
+            "App": "src/"
+        }
+    }
+}
