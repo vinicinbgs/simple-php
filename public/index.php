@@ -2,10 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Http\Router;
+include_once __DIR__ . '/../src/config/routes.php';
 
-include_once __DIR__ . '/../src/config/route.php';
+use Packages\Bootstrap;
 
-$router = Router::getInstance();
-
-$router->run();
+Bootstrap::init();

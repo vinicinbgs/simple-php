@@ -8,14 +8,20 @@
         }
     ],
     "require": {
-        "psr/http-message": "^1.0"
+        "psr/http-message": "^1.0",
+        "psr/log": "^1.0"
     },
     "config": {
         "optimize-autoloader": true
     },
     "autoload": {
-        "psr-0": {
-            "App": "src/"
+        "classmap": [
+            "packages",
+            "src"
+        ],
+        "psr-4": {
+            "Packages\\": "packages/",
+            "App\\": "src/"
         }
     }
 }

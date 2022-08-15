@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http;
+namespace Packages\Http;
 
-use App\Http\Response;
+use Packages\Http\Response;
 
 class Router
 {
@@ -19,7 +19,7 @@ class Router
         $route = $this->getRoute();
         $method = $this->getMethod();
 
-        if (is_null($this->routes[$method][$route])) {
+        if (!isset($this->routes[$method][$route]) || is_null($this->routes[$method][$route])) {
             return $this->pageNotFound();
         }
 
@@ -39,6 +39,11 @@ class Router
     public function put($path, $controller)
     {
         $this->map('PUT', $path, $controller);
+    }
+
+    public function patch($path, $controller)
+    {
+        $this->map('PATCH', $path, $controller);
     }
 
     public function delete($path, $controller)
@@ -64,7 +69,6 @@ class Router
     private function executeController(string $route, string $method)
     {
         list($controller, $method) = explode('@', $this->routes[$method][$route]);
-        $controller = "App\\Controllers\\" . $controller;
 
         return (new $controller())->$method();
     }

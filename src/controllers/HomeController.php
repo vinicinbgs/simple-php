@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Http\View;
-use App\Http\Request;
-use App\Http\Response;
+use App\Logging\StoreLog;
+use Packages\Http\View;
+use Packages\Http\Request;
+use Packages\Http\Response;
 
 class HomeController
 {
@@ -15,22 +16,22 @@ class HomeController
 
     public function index()
     {
-        $challenger = $this->request->get('challenger');
+        $challenger = $this->request->queryParams('challenger');
 
         View::load($challenger . '/index', [
             'name' => 'Vinicius',
-            'styles' => 'day-04/styles.css'
+            'styles' => "{$challenger}/styles.css"
         ]);
     }
 
     public function store()
     {
-        if ($_SERVER['CONTENT_TYPE'] == 'application/json') {
-            $post = json_decode(file_get_contents('php://input', 'r'), true);
-        } else {
-            parse_str(file_get_contents("php://input"), $post);
-        }
+        $post = $this->request->fields(["name", "age"]);
 
-        return Response::send($post);
+        sleep(10);
+
+        (new StoreLog($post))->emit();
+
+        return Response::send($post, 200);
     }
 }
