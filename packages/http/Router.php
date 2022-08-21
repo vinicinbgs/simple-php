@@ -3,9 +3,11 @@
 namespace Packages\Http;
 
 use Packages\Http\Response;
+use stdClass;
 
 class Router
 {
+    public $traceId;
     private $routes;
     private static $instance;
 
@@ -70,7 +72,10 @@ class Router
     {
         list($controller, $method) = explode('@', $this->routes[$method][$route]);
 
-        return (new $controller())->$method();
+        $request = new Request();
+        $request->traceId = $this->traceId;
+
+        return (new $controller($request))->$method();
     }
 
     /**
@@ -84,6 +89,12 @@ class Router
     private function getMethod()
     {
         return $_SERVER['REQUEST_METHOD'];
+    }
+
+    public function generateTraceId()
+    {
+        $timestamp = (string) (new \DateTime())->getTimestamp();
+        $this->traceId = hash('sha256', $timestamp, false);
     }
 
     public static function getInstance()

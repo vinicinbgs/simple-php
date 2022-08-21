@@ -4,6 +4,7 @@ namespace Packages\Http;
 
 class Request
 {
+  public $traceId;
 
   public function queryParams(string $key)
   {
@@ -27,6 +28,7 @@ class Request
         $selectedFields[$field] = $data[$field];
       }
     }
+
     return $selectedFields;
   }
 
