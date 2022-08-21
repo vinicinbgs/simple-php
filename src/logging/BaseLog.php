@@ -3,9 +3,11 @@
 namespace App\Logging;
 
 use Packages\Logging\Log;
+use Packages\Logging\LogInterface;
+
 use App\Logging\Processors\RequestProcessor;
 
-class BaseLog
+class BaseLog implements LogInterface
 {
     protected $logger;
 
