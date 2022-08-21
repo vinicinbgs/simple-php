@@ -6,7 +6,7 @@ use Psr\Log\AbstractLogger;
 
 use DateTime;
 use DateTimeInterface;
-use stdClass;
+use Packages\Logging\ProcessorInterface;
 
 class Log extends AbstractLogger
 {
@@ -27,7 +27,7 @@ class Log extends AbstractLogger
         fclose($stream);
     }
 
-    public function pushProcessor($processor)
+    public function pushProcessor(ProcessorInterface $processor)
     {
         $this->output = $processor();
     }

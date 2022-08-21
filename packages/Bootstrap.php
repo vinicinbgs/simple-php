@@ -4,7 +4,6 @@ namespace Packages;
 
 use App\Logging\MeasurePerformance;
 use Packages\Http\Router;
-use Packages\Logging\Log;
 
 include_once "utils.php";
 class Bootstrap
