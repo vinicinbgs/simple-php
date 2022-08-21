@@ -3,7 +3,6 @@
 namespace Packages\Http;
 
 use Packages\Http\Response;
-use stdClass;
 
 class Router
 {
