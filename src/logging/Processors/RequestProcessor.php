@@ -2,7 +2,9 @@
 
 namespace App\Logging\Processors;
 
-class RequestProcessor
+use Packages\Logging\ProcessorInterface;
+
+class RequestProcessor implements ProcessorInterface
 {
     public function __invoke()
     {
