@@ -3,6 +3,7 @@
 namespace App\Logging;
 
 use Packages\Logging\Log;
+use App\Logging\Processors\RequestProcessor;
 
 class BaseLog
 {
@@ -23,6 +24,8 @@ class BaseLog
 
     public function emit()
     {
+        $this->logger->pushProcessor(new RequestProcessor());
+
         $this->logger->info(
             $this->formatMessage($this->message),
             $this->chooseFields($this->context)
