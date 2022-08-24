@@ -92,7 +92,7 @@ class Router
 
     public function generateTraceId()
     {
-        $timestamp = (string) (new \DateTime())->getTimestamp();
+        $timestamp = (string) ((new \DateTime())->getTimestamp() * mt_rand(1, 3));
         $this->traceId = hash('sha256', $timestamp, false);
     }
 

@@ -3,7 +3,6 @@
 namespace Packages;
 
 use Packages\Http\Router;
-use Packages\Logging\LogInterface;
 
 include_once "utils.php";
 class Bootstrap
@@ -42,10 +41,5 @@ class Bootstrap
     {
         $timezone = getenv("APP_TIMEZONE") ?? 'Etc/UTC';
         date_default_timezone_set($timezone);
-    }
-
-    public static function measurePerformance(LogInterface $log)
-    {
-        register_shutdown_function($log->emit());
     }
 }

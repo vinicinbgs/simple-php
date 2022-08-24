@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7904f5f80d0f7f5f5f4853fb3ea96f2",
+    "content-hash": "84f4e805981c5ba549454ecea9325bf3",
     "packages": [
         {
             "name": "psr/http-message",
@@ -108,12 +108,72 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
             "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
+            "name": "vinicinbgs/autentique-v2",
+            "version": "dev-refactor/token",
+            "source": {
+                "type": "git",
+                "url": "../autentique-v2",
+                "reference": "5725e78152c9c85acbc82fe7aa8865f9ed82a22a"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "vlucas/phpdotenv": "^4.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src",
+                    "tests"
+                ],
+                "psr-4": {
+                    "vinicinbgs\\Autentique\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit tests --coverage-text"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage/"
+                ],
+                "load": [
+                    "composer dumpautoload"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vinicius Morais Dutra",
+                    "email": "dutra_morais@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Api Autentique V2",
+            "homepage": "https://github.com/vinicinbgs/autentique-v2",
+            "keywords": [
+                "api",
+                "autentique",
+                "v2"
+            ],
+            "time": "2022-08-21T16:03:27+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "vinicinbgs/autentique-v2": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
