@@ -3,17 +3,14 @@
 namespace App\Controllers;
 
 use App\Logging\StoreLog;
+use App\Controllers\BaseController;
+
 use Packages\Http\View;
 use Packages\Http\Request;
 use Packages\Http\Response;
-
-use PDO;
+use Packages\Database\Connect;
 
 use vinicinbgs\Autentique\Documents;
-
-use App\Controllers\BaseController;
-use App\Exceptions\FirstException;
-use Exception;
 
 class HomeController extends BaseController
 {
@@ -27,34 +24,21 @@ class HomeController extends BaseController
     public function index()
     {
         $challenger = $this->request->queryParams('challenger');
-        $this->db();
+
+        $connect = (new Connect());
+        $connect = $connect->conn();
+        $connect->insert();
+
         View::load($challenger . '/index', [
             'name' => 'Vinicius',
             'styles' => "{$challenger}/styles.css"
         ]);
     }
 
-    private function db()
-    {
-        $pdo = new PDO(
-            'mysql:host=db;port=3306;dbname=teste',
-            'root',
-            'root'
-        );
-
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $pdo->exec("INSERT INTO testinhox (id) VALUES (1);");
-
-        unset($pdo);
-
-        throw new FirstException("Hello", 400);
-    }
-
     public function store()
     {
         $post = $this->request->fields(["name", "age"]);
-        $this->db();
+
         // $documents = new Documents();
 
         // $docs = $documents->create([

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Packages\Http;
 
 interface HttpExceptionInterface
 {
