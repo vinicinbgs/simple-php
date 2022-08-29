@@ -22,5 +22,8 @@
             <directory suffix=".php">src</directory>
             <directory suffix=".php">packages</directory>
         </include>
+        <exclude>
+            <directory>*/tests</directory>
+        </exclude>
     </coverage>
 </phpunit>

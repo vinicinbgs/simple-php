@@ -36,6 +36,6 @@
         "mockery/mockery": "^1.5"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit packages --testdox --coverage-html ./coverage"
+        "test": "XDEBUG_MODE=coverage vendor/bin/phpunit packages --testdox --coverage-html ./coverage"
     }
 }
