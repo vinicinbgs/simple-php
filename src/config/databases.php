@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default' => 'mysql',
+    'default' => '',
 
     'connections' => [
         'mysql' => [

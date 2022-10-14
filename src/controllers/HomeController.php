@@ -31,7 +31,7 @@ class HomeController extends BaseController
 
         View::load($challenger . '/index', [
             'name' => 'Vinicius',
-            'styles' => "{$challenger}/styles.css"
+            'styles' => "resources/{$challenger}/styles.css"
         ]);
     }
 

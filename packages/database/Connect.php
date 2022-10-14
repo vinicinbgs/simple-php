@@ -24,11 +24,16 @@ class Connect
     {
         $this->configs = require __DIR__ . '../../../src/config/databases.php';
         $default = $this->configs['default'];
-        $this->connection = $this->configs['connections'][$default];
+
+        $this->connection = $this->configs['connections'][$default] ?? [];
     }
 
     protected function conn()
     {
+        if (empty($this->connection)) {
+            return $this;
+        }
+
         $connectionDTO = new ConnectionDTO($this->connection);
 
         $this->pdo = new PDO(
@@ -44,6 +49,10 @@ class Connect
 
     protected function insert()
     {
+        if (empty($this->pdo)) {
+            return;
+        }
+
         return $this->pdo->exec("INSERT INTO testinhox (id) VALUES (1000);");
     }
 

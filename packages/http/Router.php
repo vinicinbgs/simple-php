@@ -19,6 +19,11 @@ class Router
     {
         $route = $this->getRoute();
         $method = $this->getMethod();
+        
+        if (explode("/", $route)[1] == "resources") {
+            header("Content-type: text/css");
+            return include("./$route");
+        }
 
         if (!isset($this->routes[$method][$route]) || is_null($this->routes[$method][$route])) {
             return $this->pageNotFound();
